@@ -138,7 +138,7 @@ body {
   .tkLogocontainer{
     position: relative;
     display:flex;
-    width: 100%;
+    /* width: 100%; */
     margin: auto;
     box-sizing: border-box;
 

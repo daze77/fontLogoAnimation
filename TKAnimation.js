@@ -1,65 +1,55 @@
+function logoAnimation(){
+  const logoNameL = document.querySelector('#logoNameL').innerText.split("")
+  const logoNameR = document.querySelector('#logoNameR').innerText.split("")
 
 
-    // anime({
-    //     targets: '.test',
-    //     translateX: 250,
-    //     rotate: '1turn',
-    //     backgroundColor: '#FFF',
-    //     duration: 800
-    //   });
+  document.querySelector('#logoNameL').innerText = ""
+  document.querySelector('#logoNameR').innerText = ""
 
 
-
-
-
-
-
-    // anime({
-    //   targets: '.logoimg',
-    //   translateY: -250,
-    //   direction: 'alternate',
-    //   // translatez:100,
-    //   // scale: 1.5,
-    //   // rotate: anime.stagger([-360,360]),
-    //   // duration: 1000,
-    //   easing: 'cubicBezier(.5, .05, .1, .3)',
-    //   loop: true,
-    // });
-
-    // anime({
-    //   targets: '.logoimg',
-    //   translateY: -270,
-    //   direction: 'alternate',
-    //   loop: true,
-    //   duration: 1000,
-    //   easing: function(el, i, total) {
-    //     return function(t) {
-    //       return Math.pow(Math.sin(t * (i + 1)), total);
-    //     }
-    //   }
-    // });
-
-
-
-    // function randomValues() {
-    //   anime({
-    //     targets: '.logoimg',
-    //     translateY: function() {
-    //       return anime.random(0, -270);
-    //     },
-    //     easing: 'easeInOutQuad',
-    //     duration: 750,
-    //     complete: randomValues
-    //   });
-    // }
+  function createLLogo(){
     
-    // randomValues();
+    
+    
+    let logoNames ={
+      leftLogoName: [],
+      rightLogoName: []
+    }
+    let randNum = Math.floor(Math.random()*350)
 
+    logoNameL.forEach(element => {
+      let spanEl = document.createElement('span')
+      spanEl.classList.add('el')
+      spanEl.setAttribute('data-x',`${randNum}`)
+      spanEl.append(element)
+      logoNames.leftLogoName.push(spanEl)
+    })    
+    logoNameR.forEach(elementt => {
+      let spanEl = document.createElement('span')
+      spanEl.classList.add('el')
+      spanEl.setAttribute('data-x',`${randNum}`)
+
+
+      spanEl.append(elementt)
+      logoNames.rightLogoName.push(spanEl)
+    })    
+    
+    console.log(logoNames)
+    return logoNames
+  }
+
+  document.querySelector('#logoNameL').append(...createLLogo().leftLogoName)
+  document.querySelector('#logoNameR').append(...createLLogo().rightLogoName)
+
+}
+    
+    
+    logoAnimation()
 
     var tl = anime.timeline({
       targets: '.logoimg',
-      delay: function(el, i) { return i * 200 },
-      duration: 500, // Can be inherited
+      delay: function(el, i) { return i * 100 },
+      duration: 400, // Can be inherited
       easing: 'easeOutExpo', // Can be inherited
       direction: 'alternate', // Is not inherited
       loop: 2 // Is not inherited
@@ -83,7 +73,17 @@
     .add({
       translateX: 0,
       scale: 0.75
-    });
+    })
+  //   .add({
+
+  
+  //     targets: '.tkLogoName .el',
+  //     translateY: -200,
+  //     translateX: 200,
+  //     delay: anime.stagger(300,{easing: 'easeOutQuad'}) // increase delay by 100ms for each elements.
+  
+  
+  // });
 
 
     // var relativeEl = document.querySelector('.logoimg'); relativeEl.style.transform = 'translateX(100px)';
@@ -109,65 +109,51 @@
 
 
 
-    function logoAnimation(){
-      const logoNameL = document.querySelector('#logoNameL').innerText.split("")
-      const logoNameR = document.querySelector('#logoNameR').innerText.split("")
  
 
-      document.querySelector('#logoNameL').innerText = ""
-      document.querySelector('#logoNameR').innerText = ""
-
-
-      function createLLogo(){
-        
-        
-        
-        let logoNames ={
-          leftLogoName: [],
-          rightLogoName: []
-        }
-
-
-
-        // let leftLogoName =[]
-        // let rightLogoName =[]
-
-
-        logoNameL.forEach(element => {
-          let spanEl = document.createElement('span')
-          spanEl.append(element)
-          logoNames.leftLogoName.push(spanEl)
-        })    
-        logoNameR.forEach(elementt => {
-          let spanEl = document.createElement('span')
-          spanEl.append(elementt)
-          logoNames.rightLogoName.push(spanEl)
-        })    
-        
-        console.log(logoNames)
-        return logoNames
-      }
-
-      document.querySelector('#logoNameL').append(...createLLogo().leftLogoName)
-      document.querySelector('#logoNameR').append(...createLLogo().rightLogoName)
-
-
 
     
-
-
-
-    }
-
-
-    logoAnimation()
     
 
-
+    // anime({
+    //   targets: '.tkLogoName .el',
+    //   translateY: -200,
+    //   translateX: 200,
+    //   delay: anime.stagger(300,{easing: 'easeOutQuad'}) // increase delay by 100ms for each elements.
+    // });
   
 
-    anime({
-      targets: '.tkLogoName',
-      translateY: -200,
-      delay: anime.stagger(100) // increase delay by 100ms for each elements.
-    });
+// tl.add({
+
+  
+//     targets: '.tkLogoName .el',
+//     translateY: -200,
+//     translateX: 200,
+//     delay: anime.stagger(300,{easing: 'easeOutQuad'}) // increase delay by 100ms for each elements.
+
+
+// })
+
+
+
+
+
+
+anime({
+  targets: '.tkLogoName .el',
+  translateX: function(el) {
+    return el.getAttribute('data-x');
+  },
+  translateY: function(el, i) {
+    return 50 + (-50 * i);
+  },
+  scale: function(el, i, l) {
+    return (l - i) + .25;
+  },
+  rotate: function() { return anime.random(-360, 360); },
+  borderRadius: function() { return ['50%', anime.random(10, 35) + '%']; },
+  duration: function() { return anime.random(1200, 1800); },
+  delay: function() { return anime.random(0, 400); },
+  direction: 'alternate',
+  loop: 2
+});
