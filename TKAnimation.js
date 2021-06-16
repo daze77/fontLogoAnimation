@@ -110,37 +110,64 @@
 
 
     function logoAnimation(){
-      let spanEl = document.createElement('span')
-      
-      let logoNameL = document.querySelector('#logoNameL').innerText.split("")
-      let logoNameR = document.querySelector('#logoNameR').innerText.split("")
+      const logoNameL = document.querySelector('#logoNameL').innerText.split("")
+      const logoNameR = document.querySelector('#logoNameR').innerText.split("")
  
 
       document.querySelector('#logoNameL').innerText = ""
       document.querySelector('#logoNameR').innerText = ""
 
-      
-      logoNameL.forEach(element => {
-        let logonameLeft = document.createTextNode(element)
-        document.querySelector('#logoNameL').appendChild(spanEl.appendChild(logonameLeft))
-      });
 
-      logoNameR.forEach(element => {
-        let logonameRight = document.createTextNode(element)
-        document.querySelector('#logoNameR').appendChild(spanEl.appendChild(logonameRight))
-      });
+      function createLLogo(){
+        
+        
+        
+        let logoNames ={
+          leftLogoName: [],
+          rightLogoName: []
+        }
+
+
+
+        // let leftLogoName =[]
+        // let rightLogoName =[]
+
+
+        logoNameL.forEach(element => {
+          let spanEl = document.createElement('span')
+          spanEl.append(element)
+          logoNames.leftLogoName.push(spanEl)
+        })    
+        logoNameR.forEach(elementt => {
+          let spanEl = document.createElement('span')
+          spanEl.append(elementt)
+          logoNames.rightLogoName.push(spanEl)
+        })    
+        
+        console.log(logoNames)
+        return logoNames
+      }
+
+      document.querySelector('#logoNameL').append(...createLLogo().leftLogoName)
+      document.querySelector('#logoNameR').append(...createLLogo().rightLogoName)
+
+
+
+    
+
 
 
     }
 
-    logoAnimation()
 
+    logoAnimation()
+    
 
 
   
 
     anime({
-      targets: '.tkLogoName .el',
+      targets: '.tkLogoName',
       translateY: -200,
       delay: anime.stagger(100) // increase delay by 100ms for each elements.
     });
