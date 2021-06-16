@@ -196,3 +196,8 @@ svg{
 body{
   /* background-color: black; */
 }
+
+
+.el{
+  display:inline-block;
+}

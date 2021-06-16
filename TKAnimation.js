@@ -106,3 +106,41 @@
     //   },
     //   direction: 'alternate'
     // });
+
+
+
+    function logoAnimation(){
+      let spanEl = document.createElement('span')
+      
+      let logoNameL = document.querySelector('#logoNameL').innerText.split("")
+      let logoNameR = document.querySelector('#logoNameR').innerText.split("")
+ 
+
+      document.querySelector('#logoNameL').innerText = ""
+      document.querySelector('#logoNameR').innerText = ""
+
+      
+      logoNameL.forEach(element => {
+        let logonameLeft = document.createTextNode(element)
+        document.querySelector('#logoNameL').appendChild(spanEl.appendChild(logonameLeft))
+      });
+
+      logoNameR.forEach(element => {
+        let logonameRight = document.createTextNode(element)
+        document.querySelector('#logoNameR').appendChild(spanEl.appendChild(logonameRight))
+      });
+
+
+    }
+
+    logoAnimation()
+
+
+
+  
+
+    anime({
+      targets: '.tkLogoName .el',
+      translateY: -200,
+      delay: anime.stagger(100) // increase delay by 100ms for each elements.
+    });
