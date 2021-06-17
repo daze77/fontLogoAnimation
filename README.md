@@ -42,7 +42,7 @@
     
 ## Questions
     
-    You can find me here on [GitHub](http://github.com/daze77), or contact me via [email](mailto:daze77@gmail.com)  
+You can find me here on [GitHub](http://github.com/daze77), or contact me via [email](mailto:daze77@gmail.com)  
 
 
 ## Git Hub Link
