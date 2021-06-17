@@ -74,86 +74,63 @@ function logoAnimation(){
       translateX: 0,
       scale: 0.75
     })
-  //   .add({
+
+
+
+
+
+
+
+// anime({
+//   targets: '.tkLogoName .el',
+//   translateX: function(el) {
+//     return el.getAttribute('data-x');
+//   },
+//   translateY: function(el, i) {
+//     return 50 + (-50 * i);
+//   },
+//   scale: function(el, i, l) {
+//     return (l - i) + .25;
+//   },
+//   rotate: function() { return anime.random(-360, 360); },
+//   borderRadius: function() { return ['50%', anime.random(10, 35) + '%']; },
+//   duration: function() { return anime.random(1200, 1800); },
+//   delay: function() { return anime.random(0, 400); },
+//   direction: 'alternate',
+//   loop: 2
+// });
+
+
+
+let animation = anime.timeline({loop: 2, opacity: 1})
+  .add({
+    targets: '.tkLogoName .el',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.tkLogoName',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  })
+
+
+animation.finished.then(goAgain)
+
+function goAgain(){
+
+  anime.set(document.querySelector('.tkLogoName').style.opacity=1
+  )
+
+
+}
+
+
+
+
+
 
   
-  //     targets: '.tkLogoName .el',
-  //     translateY: -200,
-  //     translateX: 200,
-  //     delay: anime.stagger(300,{easing: 'easeOutQuad'}) // increase delay by 100ms for each elements.
-  
-  
-  // });
-
-
-    // var relativeEl = document.querySelector('.logoimg'); relativeEl.style.transform = 'translateX(100px)';
-
-    // anime({
-    //   targets: '.logoimg',
-    //   translateX: {
-    //     value: '*=2.5', // 100px * 2.5 = '250px'
-    //     duration: 1000
-    //   },
-    //   width: {
-    //     value: '-=20px', // 28 - 20 = '8px'
-    //     duration: 1800,
-    //     easing: 'easeInOutSine'
-    //   },
-    //   rotate: {
-    //     value: '+=2turn', // 0 + 2 = '2turn'
-    //     duration: 1800,
-    //     easing: 'easeInOutSine'
-    //   },
-    //   direction: 'alternate'
-    // });
-
-
-
- 
-
-
-    
-    
-
-    // anime({
-    //   targets: '.tkLogoName .el',
-    //   translateY: -200,
-    //   translateX: 200,
-    //   delay: anime.stagger(300,{easing: 'easeOutQuad'}) // increase delay by 100ms for each elements.
-    // });
-  
-
-// tl.add({
-
-  
-//     targets: '.tkLogoName .el',
-//     translateY: -200,
-//     translateX: 200,
-//     delay: anime.stagger(300,{easing: 'easeOutQuad'}) // increase delay by 100ms for each elements.
-
-
-// })
-
-
-
-
-
-
-anime({
-  targets: '.tkLogoName .el',
-  translateX: function(el) {
-    return el.getAttribute('data-x');
-  },
-  translateY: function(el, i) {
-    return 50 + (-50 * i);
-  },
-  scale: function(el, i, l) {
-    return (l - i) + .25;
-  },
-  rotate: function() { return anime.random(-360, 360); },
-  borderRadius: function() { return ['50%', anime.random(10, 35) + '%']; },
-  duration: function() { return anime.random(1200, 1800); },
-  delay: function() { return anime.random(0, 400); },
-  direction: 'alternate',
-  loop: 2
-});
