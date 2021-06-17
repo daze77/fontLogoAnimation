@@ -57,12 +57,13 @@ function logoAnimation(){
     
     tl
     .add({
-      translateY: -250,
+      translateY: 250,
+      translateX: 450,
       // override the easing parameter
       easing: 'spring',
     })
     .add({
-      opacity: .8,
+      opacity: 1,
       scale: 2
     })
     .add({
@@ -71,7 +72,8 @@ function logoAnimation(){
       rotate: 180
     })
     .add({
-      translateX: 0,
+      // translateX: 0,
+      // translateY:0,
       scale: 0.75
     })
 

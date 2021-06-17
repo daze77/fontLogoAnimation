@@ -1,11 +1,11 @@
-body {
+/* body {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     width: 100%;
     height: 100vh;
-  }
+  } */
   
   /* Logo */
   
@@ -139,21 +139,21 @@ body {
     position: relative;
     display:flex;
     /* width: 100%; */
-    margin: auto;
+    /* margin: auto; */
     box-sizing: border-box;
 
   }
 
   .tkLogoSymbolContainer{
     position: relative;
-    height: 200px;
-    width: 200px;;
+    height: 100px;
+    width: 90px;;
     /* right: -25%; */
   }
 
   .tkLogoNameContainer{
     position: relative;
-    height: 200px;
+    height: 100px;
     width: 200px;;
     /* right: -25%; */
   }
@@ -187,14 +187,6 @@ body {
 
 #logoNameR{
   color: #858689
-}
-
-svg{
-  /* background-color: blueviolet; */
-}
-
-body{
-  /* background-color: black; */
 }
 
 
